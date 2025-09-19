@@ -1,0 +1,50 @@
+<view class="container">
+  <!-- 通知设置（发布员） -->
+  <view class="card">
+    <view class="title">通知设置（发布员）</view>
+    <view class="sub">点击下方按钮进行订阅，系统将获取你的 OpenID，并在发布职位时自动填入接收人。</view>
+    <button class="btn-ghost" bindtap="subscribe">订阅提醒</button>
+    <view class="sub" wx:if="{{publisherOpenid}}">已绑定 OpenID：{{publisherOpenid}}</view>
+  </view>
+
+  <!-- 发布职位 -->
+  <view class="card">
+    <view class="title">发布职位</view>
+    <view class="label">职位标题</view>
+    <input class="input" placeholder="如：前端实习生" value="{{form.title}}" bindinput="onInput" data-k="title"/>
+
+    <view class="label">城市/类别（可选）</view>
+    <input class="input" placeholder="如：北京/实习" value="{{form.city}}" bindinput="onInput" data-k="city"/>
+
+    <view class="label">薪资/备注（可选）</view>
+    <input class="input" placeholder="如：3-5K 实习补贴" value="{{form.salary}}" bindinput="onInput" data-k="salary"/>
+
+    <view class="label">职位描述</view>
+    <textarea class="input" placeholder="工作内容、要求…" value="{{form.desc}}" bindinput="onInput" data-k="desc" maxlength="-1"/>    
+
+    <view class="row">
+      <view class="sub">需要作品集</view>
+      <switch checked="{{form.requirePortfolio}}" bindchange="onPortfolioSwitch"/>
+    </view>
+
+    <view class="label">接收提醒的发布员 OpenID（自动获取，也可手填）</view>
+    <input class="input" placeholder="点击上方“订阅提醒”获取" value="{{form.publisherOpenid}}" bindinput="onInput" data-k="publisherOpenid"/>
+
+    <view class="row" style="margin-top:16rpx">
+      <button class="btn-primary" bindtap="saveJob">发布</button>
+      <button class="btn-ghost" style="margin-left:16rpx" bindtap="resetForm">清空</button>
+    </view>
+  </view>
+
+  <view class="title" style="margin:0 24rpx 12rpx">已发布</view>
+  <block wx:for="{{jobs}}" wx:key="id">
+    <view class="card">
+      <view class="row">
+        <view style="font-weight:600">{{item.title}}</view>
+        <button size="mini" class="btn-ghost" data-id="{{item.id}}" bindtap="removeJob">删除</button>
+      </view>
+      <view class="sub">{{item.city||'—'}} · 提醒接收人：{{item.publisherOpenid ? '已设置' : '未设置'}}</view>
+      <view class="sub">更新于 {{item.updatedAt}}</view>
+    </view>
+  </block>
+</view>

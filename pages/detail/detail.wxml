@@ -1,0 +1,39 @@
+<view class="container" wx:if="{{job}}">
+  <view class="card">
+    <view class="title">{{job.title}}</view>
+    <view class="sub">{{job.city||'—'}} · {{job.salary||'—'}}</view>
+    <view style="margin-top:16rpx;white-space:pre-wrap;color:#444">{{job.desc}}</view>
+  </view>
+
+  <view class="card">
+    <view class="title" style="font-size:30rpx">投递信息</view>
+    <view class="label">姓名</view>
+    <input class="input" placeholder="请输入" value="{{form.name}}" bindinput="onInput" data-k="name"/>
+    <view class="label">电话</view>
+    <input class="input" type="number" placeholder="请输入" value="{{form.phone}}" bindinput="onInput" data-k="phone"/>
+    <view class="label">邮箱</view>
+    <input class="input" type="text" placeholder="name@example.com" value="{{form.email}}" bindinput="onInput" data-k="email"/>
+
+    <view class="label">上传简历（PDF/DOC/DOCX/Excel）</view>
+    <button class="btn-ghost" bindtap="chooseResume">选择简历</button>
+    <view class="sub" wx:if="{{resume.fileName}}">已选：{{resume.fileName}}</view>
+  </view>
+
+  <block wx:if="{{job.requirePortfolio}}">
+    <view class="card">
+      <view class="title" style="font-size:30rpx">作品集（任选其一或都提供）</view>
+      <view class="label">作品集链接（可选）</view>
+      <input class="input" placeholder="https://..." value="{{portfolio.link}}" bindinput="onPortfolioLink"/>
+
+      <view class="label">上传作品集文件（PDF/PPT/PPTX，可选）</view>
+      <button class="btn-ghost" bindtap="choosePortfolio">选择作品集文件</button>
+      <view class="sub" wx:if="{{portfolio.fileName}}">已选：{{portfolio.fileName}}</view>
+    </view>
+  </block>
+
+  <view class="footerbar">
+    <view class="actions">
+      <button class="btn-primary" style="flex:1" bindtap="submitAll">提交投递</button>
+    </view>
+  </view>
+</view>
