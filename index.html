@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Weapp Jobs</title>
-  </head>
-  <body>
-    <h1>Weapp Jobs API 部署成功 ✅</h1>
-    <p>API 路径: /api/uploadImage</p>
-  </body>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Weapp Jobs</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,'Apple Color Emoji','Segoe UI Emoji';margin:0;padding:40px;background:#f6f7fb;color:#111}
+    .card{max-width:720px;margin:0 auto;background:#fff;border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.06);padding:28px}
+    h1{margin:0 0 12px;font-size:24px}
+    code{background:#f0f2f6;padding:2px 6px;border-radius:6px}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Weapp Jobs 已部署 ✅</h1>
+    <p>首页是静态文件。后端接口在 <code>/api/uploadImage</code>。</p>
+    <p>健康检查：<a href="/api/uploadImage" target="_blank">/api/uploadImage</a>（GET 返回 <code>{"ok":true,"msg":"ready"}</code> 即正常）</p>
+  </div>
+</body>
 </html>
