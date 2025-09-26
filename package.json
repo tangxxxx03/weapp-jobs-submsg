@@ -1,0 +1,11 @@
+{
+  "name": "weapp-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "cos-nodejs-sdk-v5": "^2.13.6",
+    "formidable": "^3.5.0"
+  },
+  "engines": { "node": "18.x" }
+}
