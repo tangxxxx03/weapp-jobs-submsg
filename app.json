@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/detail/detail",
+    "pages/admin/bind/bind",
+    "pages/admin/manage/manage"
+  ],
+  "window": {
+    "navigationBarTitleText": "职位发布与投递",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#f6f7fb",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
