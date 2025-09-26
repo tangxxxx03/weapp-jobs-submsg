@@ -1,0 +1,52 @@
+<view class="container">
+  <view class="card">
+    <view class="title">联系方式设置</view>
+    <view class="label">发布者微信号</view>
+    <input class="input" placeholder="例如：weixin12345" value="{{form.wechatId}}" bindinput="onInput" data-k="wechatId"/>
+
+    <view class="label" style="margin-top:16rpx">微信二维码</view>
+    <view class="row" style="align-items:center">
+      <button class="btn-ghost" bindtap="pickQrcode">选择图片</button>
+      <view class="sub" style="margin-left:12rpx;flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
+        {{form.qrName || (form.qrUrl ? '已上传' : '未选择文件')}}
+      </view>
+      <button wx:if="{{form.qrUrl}}" class="btn-ghost" style="margin-left:8rpx" bindtap="previewQrcode">预览</button>
+      <button wx:if="{{form.qrUrl || form.qrTempPath}}" class="btn-ghost" style="margin-left:8rpx" bindtap="removeQrcode">移除</button>
+    </view>
+    <view class="sub" style="margin-top:8rpx">
+      ● 已接上传服务后，将保存公网URL（求职者可见）；未接时仅保存本机临时图。
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="title">发布职位</view>
+    <view class="label">职位标题</view>
+    <input class="input" placeholder="如：前端实习生" value="{{form.title}}" bindinput="onInput" data-k="title"/>
+    <view class="label">城市/类别（可选）</view>
+    <input class="input" placeholder="如：北京/实习" value="{{form.city}}" bindinput="onInput" data-k="city"/>
+    <view class="label">薪资/备注（可选）</view>
+    <input class="input" placeholder="如：3-5K 实习补贴" value="{{form.salary}}" bindinput="onInput" data-k="salary"/>
+    <view class="label">职位描述</view>
+    <textarea class="input" placeholder="工作内容、要求…" value="{{form.desc}}" bindinput="onInput" data-k="desc" maxlength="-1"></textarea>
+    <view class="row" style="margin-top:16rpx">
+      <button class="btn-primary" bindtap="saveJob" disabled="{{!canSubmit}}">发布</button>
+      <button class="btn-ghost" style="margin-left:16rpx" bindtap="resetForm">清空</button>
+    </view>
+  </view>
+
+  <view class="title" style="margin:0 24rpx 12rpx">已发布</view>
+  <block wx:for="{{jobs}}" wx:key="id">
+    <view class="card">
+      <view class="row" style="justify-content:space-between;align-items:center">
+        <view style="font-weight:600">{{item.title}}</view>
+        <view class="row">
+          <button size="mini" class="btn-ghost" data-id="{{item.id}}" bindtap="openDetail">查看</button>
+          <button size="mini" class="btn-ghost" style="margin-left:8rpx" data-id="{{item.id}}" bindtap="removeJob">删除</button>
+        </view>
+      </view>
+      <view class="sub">{{item.city||'—'}} · {{item.salary||'—'}}</view>
+      <view class="sub">发布者微信：{{item.wechatId||'未填写'}} {{item.qrUrl ? '· 已配置二维码' : ''}}</view>
+      <view class="sub">更新于 {{item.updatedAt}}</view>
+    </view>
+  </block>
+</view>
