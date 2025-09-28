@@ -1,7 +1,7 @@
 {
   "version": 2,
   "functions": {
-    "api/**/*.js": { "runtime": "nodejs@22.x" }
+    "api/**/*.js": { "runtime": "nodejs@22.x" }  // ✅ 必须包含 @ 符号
   },
   "buildCommand": "npm run vercel-build",
   "outputDirectory": "."
