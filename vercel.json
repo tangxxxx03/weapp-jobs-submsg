@@ -1,8 +1,8 @@
 {
   "version": 2,
   "functions": {
-    "api/**/*.js": { "runtime": "nodejs@22.x" }  // ✅ 必须包含 @ 符号
+    "api/**/*.js": { "runtime": "nodejs@22.x" }
   },
   "buildCommand": "npm run vercel-build",
-  "outputDirectory": "."
+  "outputDirectory": "."  // ✅ 关键：指定根目录为输出目录
 }
